@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(90, 130, 238);
+}
+
+#clearLocal {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+}
+
+
+#clearLocal,
+button {            
+  width: 200px;
+  padding: 20px;
+  border: 1px solid black;
+  background: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+button:focus {
+  outline: none;
+}
+#clearLocal:hover,
+button:hover {
+  background-color: black;
+  color: white;            
+}
+
+.register__form,
+.login__form {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(101, 88, 138);
+  padding: 30px;
+  border-radius: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+}
+
+.heading > *,
+.register__form > *,
+.login__form > * {
+  padding: 15px;
+  margin: 10px;
+  color:rgb(15, 14, 17)
+}
+
+
+
+.hidden {
+  display: none;
+}
