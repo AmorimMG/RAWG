@@ -6,8 +6,10 @@
 }
 .app{
     position:relative;
-    max-width:1000px;margin:0 auto;text-align:center;
-    background-color: red;}
+    max-width:1000px;margin:0 auto;
+    text-align:center;
+    }
+
 .movie-container{
     position:relative;
     display:flex;
@@ -41,7 +43,7 @@
     margin-bottom:30px;
 }
 .movie-container .movie-list li{
-    position:relative;display:flex;
+    display:flex;
     transition:500ms;
     height:170px
 }
@@ -56,7 +58,7 @@
     align-items:center;
     font-size:32px;
     width:60%;
-    color:black;
+    color:white;
 }
 .movie-container .movie-list li .game-name .released{
     font-size:16px
@@ -73,7 +75,7 @@
     height:100%;
     width:10%;
     font-size:32px;
-    color:black;
+    color:yellow;
     text-shadow:1px 1px black;
     font-weight:700;
     text-decoration:underline;
@@ -83,4 +85,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+li {
+    float: left;
+    display: inline;
 }

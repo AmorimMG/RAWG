@@ -5,7 +5,7 @@
    <!-- Required meta tags -->
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <title>gaming</title>
+   <title>Meta3Gaming</title>
    <link rel="icon" href="img/favicon.png">
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -24,7 +24,16 @@
    <link rel="stylesheet" href="css/slick.css">
    <!-- style CSS -->
    <link rel="stylesheet" href="css/style.css">
-   <link rel="stylesheet" href="css/RAWG.css">
+   <!-- style CSS -->
+   <link rel="stylesheet" href="css/card.css">
+   <style>
+   li {
+    display: inline;
+   }
+   .movie-list{
+      margin-top: -90px;
+   }
+   </style>
 </head>
 
 <body>
@@ -47,32 +56,10 @@
                            <a class="nav-link" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="fighter.html">fighter</a>
+                           <a class="nav-link" href="fighter.html">CRUD</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="team.html">team</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                           <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button"
-                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Blog
-                           </a>
-                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="blog.html"> blog</a>
-                              <a class="dropdown-item" href="single-blog.html">Single blog</a>
-                           </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                           <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown1" role="button"
-                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              pages
-                           </a>
-                           <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                              <a class="dropdown-item" href="elements.html">Elements</a>
-                           </div>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link" href="contact.html">Contact</a>
+                           <a class="nav-link" href="team.html">Gráfico</a>
                         </li>
                      </ul>
                   </div>
@@ -92,20 +79,34 @@
          </div>
       </div>
    </section>
+<!--    <nav class="blog-pagination justify-content-center d-flex">
+      <ul class="pagination">
+          <li class="page-item">
+              <a href="#" class="page-link" aria-label="Previous">
+                  <i class="ti-angle-left"></i>
+              </a>
+          </li>
+          <li class="page-item">
+              <a href="#" class="page-link">1</a>
+          </li>
+          <li class="page-item active">
+              <a href="#" class="page-link">2</a>
+          </li>
+          <li class="page-item">
+              <a href="#" class="page-link" aria-label="Next">
+                  <i class="ti-angle-right"></i>
+              </a>
+          </li>
+      </ul>
+  </nav> -->
    <!-- breadcrumb start-->
    <!--================Blog Area =================-->
-   <section class="blog_area single-post-area section_padding">
+   <section class="blog_area section_padding">
       <div class="container">
          <div class="row">
             <div class="col-lg-9 posts-list">
-               <div class="single-post">
-                  <div class="blog_details">
-                     <div class="app">
-                        <div class="movie-container">
-                           <ul class="movie-list"></ul>
-                        </div>
-                      </div>
-                  </div>
+               <div class="cards">
+               <ul class="movie-list"></ul>
                </div>
             </div>
             <div class="col-lg-3">
@@ -114,16 +115,13 @@
                      <h4 class="widget_title">Categorias</h4>
                      <ul class="list cat-list button-group-area">
                         <li>
-                        <a class="btn selected" data-name="new-games">NEW GAMES</a>
+                        <a class="btn selected" data-name="new-games">Novos Jogos</a>
                         </li>
                         <li>
-                        <a class="btn" data-name="top-games">TOP GAMES</a>
+                        <a class="btn" data-name="top-games">TOP Jogos</a>
                         </li>
                         <li>
-                        <a class="btn" data-name="upcoming-games">UPCOMING GAMES</a>
-                        </li>
-                        <li>
-                           <a class="btn" onclick="fetchGeneros()" data-name="teste">teste</a>
+                        <a class="btn" data-name="upcoming-games">Proximos Jogos</a>
                         </li>
                      </ul>
                   </aside>
@@ -150,9 +148,22 @@
                   </aside>
                </div>
             </div>
+               <div id="jogosTodos" class="col-xl-12 col-lg-12 col-md-12">
+                  <div class="site-pagination center">
+                     <a href="#" class="active" onclick="goToPage(this, 1)">01.</a>
+                     <a href="#" onclick="goToPage(this, 2)">02.</a>
+                     <a href="#" onclick="goToPage(this, 3)">03.</a>
+                     <a href="#" onclick="goToPage(this, 4)">04.</a>
+                     <a href="#" onclick="goToPage(this, 5)">05</a>
+                     <a href="#" onclick="goToPage(this, 6)">06.</a>
+                     <a href="#" onclick="goToPage(this, 7)">07.</a>
+                     <a href="#" onclick="goToPage(this, 8)">08.</a>
+                     <a href="#" onclick="goToPage(this, 9)">09.</a>
+                     <a href="#" onclick="goToPage(this, 10)">10.</a>
+                  </div>
+               </div>
          </div>
       </div>
-   
    </section>
    <!--================Blog Area end =================-->
 
