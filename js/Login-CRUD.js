@@ -151,8 +151,6 @@ function login(){
             text: 'Login efetuado com sucesso',
         })
 
-        document.getElementById('testimonial').style.display = 'block'; 
-        document.getElementById('InfoUserLink').style.display = 'block';
         document.getElementById('LogoutBtn').style.display = 'block';
         document.getElementById('LoginBtn').style.display = 'none';
         document.getElementById('SignUpBtn').style.display = 'none';
@@ -171,8 +169,7 @@ function login(){
 }
 
 function logout(){
-    document.getElementById('testimonial').style.display = 'none'; 
-    document.getElementById('InfoUserLink').style.display = 'none';
+    
     document.getElementById('LogoutBtn').style.display = 'none';
     document.getElementById('LoginBtn').style.display = 'block';
     document.getElementById('SignUpBtn').style.display = 'block';

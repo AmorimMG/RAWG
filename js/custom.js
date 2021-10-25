@@ -120,7 +120,7 @@
 
   function makeTimer() {
     //		var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");	
-    var endTime = new Date("24 sep 2019 9:56:00 GMT+06:00");
+    var endTime = new Date("27 oct 2021 11:00:00 GMT+06:00");
     endTime = (Date.parse(endTime) / 1000);
 
     var now = new Date();
@@ -135,8 +135,8 @@
       hours = "0" + hours;
     }
 
-    $("#days").html(days + "<span>Days</span>");
-    $("#hours").html(hours + "<span>Hours</span>");
+    $("#days").html(days + "<span>Dias</span>");
+    $("#hours").html(hours + "<span>Horas</span>");
 
   }
 
