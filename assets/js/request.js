@@ -1,7 +1,7 @@
 const key = "0df647c67bfa4cada4da707178be2d34";
 
-let today,
-  threeMonthsAgo,
+let Hoje,
+  Tresmeses,
   genero,
   nextYear = "";
 
@@ -9,25 +9,25 @@ let page = 1;
 
 const InitializeDate = () => {
   // Pega data de hoje
-  today = new Date().toISOString().slice(0, 10);
+  Hoje = new Date().toISOString().slice(0, 10);
 
   // Calcula três meses atrás, (Jogos Recentes)
-  let arrToday = today.split(/[--]/);
-  let minusThreeMonths = parseInt(arrToday[1]) - 3;
+  let arrHoje = Hoje.split(/[--]/);
+  let menosTresMeses = parseInt(arrHoje[1]) - 3;
 
-  if (parseInt(arrToday[2]) > 28) arrToday[2] = parseInt(arrToday[2]) - 3;
-  if (minusThreeMonths.toString().length === 1)
-    minusThreeMonths = `0${minusThreeMonths}`;
+  if (parseInt(arrHoje[2]) > 28) arrHoje[2] = parseInt(arrHoje[2]) - 3;
+  if (menosTresMeses.toString().length === 1)
+    menosTresMeses = `0${menosTresMeses}`;
 
-  arrToday[1] = minusThreeMonths;
-  threeMonthsAgo = arrToday.join("-");
+  arrHoje[1] = menosTresMeses;
+  Tresmeses = arrHoje.join("-");
 
   // Calcula + Doze Meses (Proximos Jogos) 
-  arrToday = today.split(/[--]/);
-  if (parseInt(arrToday[2]) > 28) arrToday[2] = parseInt(arrToday[2]) - 3;
-  const plusOneYear = parseInt(arrToday[0]) + 1;
-  arrToday[0] = plusOneYear;
-  nextYear = arrToday.join("-");
+  arrHoje = Hoje.split(/[--]/);
+  if (parseInt(arrHoje[2]) > 28) arrHoje[2] = parseInt(arrHoje[2]) - 3;
+  const MaisUmAno = parseInt(arrHoje[0]) + 1;
+  arrHoje[0] = MaisUmAno;
+  nextYear = arrHoje.join("-");
 };
 
 InitializeDate();
@@ -50,11 +50,10 @@ const fetchNewGames = async (page = '1') => {
   try {
     movieList.innerHTML = `<img src="/img/loading.gif" alt="" />`;
     const response = await fetch(
-      `https://api.rawg.io/api/games?key=${key}&dates=${threeMonthsAgo},${today}&ordering=-rating&page=${page}`
+      `https://api.rawg.io/api/games?key=${key}&dates=${Tresmeses},${Hoje}&ordering=-rating&page=${page}`
     );
     const data = await response.json();
     movieList.innerHTML = "";
-    console.log(page);
     fetchGamesList(data);
   } catch (error) {
     console.error(error);
@@ -79,7 +78,7 @@ const fetchUpcomingGames = async (page = '1') => {
   try {
     movieList.innerHTML = `<img src="/img/loading.gif" alt="" />`;
     const response = await fetch(
-      `https://api.rawg.io/api/games?key=${key}&dates=${today},${nextYear}&ordering=-added&page=${page}`
+      `https://api.rawg.io/api/games?key=${key}&dates=${Hoje},${nextYear}&ordering=-added&page=${page}`
     );
     const data = await response.json();
     movieList.innerHTML = "";
@@ -233,35 +232,6 @@ const handleUpdate = (e) => {
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", handleUpdate);
 }
-
-/* const fetchGamesList = (data) => {
-  const e = data.results; // Cada "e" é um objeto contendo infomação de um jogo
-  for (let i = 0; i < e.length; i++) {
-    movieList.innerHTML += `
-    <li class="fade">
-      <img
-        class="screenshot"
-        src="${e[i].short_screenshots[0].image}"
-        alt="screenshot of game"
-      />
-      <div class="game-name">
-        <div class="name">${e[i].name}</div>
-        <div>
-          <span class="released">Lançamento:</span>
-          <span class="date">${e[i].released}</span>
-        </div>
-      </div>
-      <div class="score">
-      ${e[i].rating}
-      </div>
-    </li>
-    `; 
-    movieItem = document.querySelectorAll(".movie-list li");
-    setTimeout(function () {
-      movieItem[i].classList.remove("fade");
-    }, 100);
-  }
-};*/
 
 const fetchGamesList = (data) => {
   const e = data.results; // Cada "e" é um objeto contendo infomação de um jogo
