@@ -32,6 +32,7 @@ const InitializeDate = () => {
 
 InitializeDate();
 
+  // Função de Paginação da Pagina
 function goToPage(element, newPage){
   const parentElement = element.parentElement
   const links = parentElement.getElementsByClassName('active')
@@ -46,6 +47,7 @@ function goToPage(element, newPage){
   fetchNewGames(page)
 }
 
+  // Função Fetch Novos Jogos
 const fetchNewGames = async (page = '1') => {
   try {
     movieList.innerHTML = `<img src="/img/loading.gif" alt="" />`;
@@ -60,6 +62,7 @@ const fetchNewGames = async (page = '1') => {
   }
 };
 
+// Função Fetch Top Jogos
 const fetchTopGames = async (page = '1') => {
   try {
     movieList.innerHTML = `<img src="/img/loading.gif" alt="" />`;
@@ -73,7 +76,7 @@ const fetchTopGames = async (page = '1') => {
     console.error(error);
   }
 };
-
+// Função Fetch Proximos Jogos
 const fetchUpcomingGames = async (page = '1') => {
   try {
     movieList.innerHTML = `<img src="/img/loading.gif" alt="" />`;
@@ -87,7 +90,7 @@ const fetchUpcomingGames = async (page = '1') => {
     console.error(error);
   }
 };
-
+// Função Fetch Generos
 const fetchGeneros = async (genero='',page = '1') => {
   try {
     movieList.innerHTML = `<img src="/img/loading.gif" alt="" />`;
@@ -101,7 +104,7 @@ const fetchGeneros = async (genero='',page = '1') => {
     console.error(error);
   }
 };
-
+// Função Fetch Plataforma
 const fetchPlataforma = async (plataformaid='',page = '1') => {
   try {
     movieList.innerHTML = `<img src="/img/loading.gif" alt="" />`;
@@ -116,7 +119,7 @@ const fetchPlataforma = async (plataformaid='',page = '1') => {
     console.error(error);
   }
 };
-
+// Função Fetch Tags
 const fetchTags = async (tagsid='',page = '1') => {
   try {
     movieList.innerHTML = `<img src="/img/loading.gif" alt="" />`;
@@ -130,28 +133,36 @@ const fetchTags = async (tagsid='',page = '1') => {
     console.error(error);
   }
 };
+
+// Função Lista Generos
 async function ListaGeneros(page = '1') {
   const response = await fetch(`https://api.rawg.io/api/genres?key=${key}&page=${page}`)
   const myJson = await response.json();
   return myJson
 }
 
+// Função Lista Plataformas
 async function ListaPlataformas(page = '1') {
   const response = await fetch(`https://api.rawg.io/api/platforms?key=${key}&page=${page}`)
   const myJson = await response.json();
   return myJson
 }
 
+// Função Lista Tags
 async function ListaTags(page = '1') {
   const response = await fetch(`https://api.rawg.io/api/tags?key=${key}&page=${page}`)
   const myJson = await response.json();
   return myJson
 }
+
+// Função Lista Lojas
 async function ListaStores(page = '1') {
   const response = await fetch(`https://api.rawg.io/api/stores?key=${key}&page=${page}`)
   const myJson = await response.json();
   return myJson
 }
+
+// Função Printa Plataformas na tela
 async function PrintPlataforma() {
   const response = await ListaPlataformas()
   for(var i=0;i < response.results.length;i++){
@@ -164,7 +175,7 @@ async function PrintPlataforma() {
     document.querySelector(".plataforma-container>#plataforma-list").appendChild(newRow);
   }
 } 
-
+// Função Printa Generos na tela
 async function PrintGeneros() {
   const response = await ListaGeneros()
   for(var i=0;i < response.results.length;i++){
@@ -177,7 +188,7 @@ async function PrintGeneros() {
     document.querySelector(".genre-container>#genre-list").appendChild(newRow);
   }
 }
-
+// Função Printa Tags na tela
 async function PrintTags() {
   const response = await ListaTags()
   for(var i=0;i < response.results.length;i++){
@@ -233,14 +244,15 @@ for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", handleUpdate);
 }
 
+// Função gera a lista na tela
 const fetchGamesList = (data) => {
   const e = data.results; // Cada "e" é um objeto contendo infomação de um jogo
   for (let i = 0; i < e.length; i++) {
     movieList.innerHTML += `
     <li>
-    <div class="card">
+    <div class="card" style="">
     <div class="card__image-holder">
-      <img class="card__image" src="${e[i].short_screenshots[0].image}" alt="screenshot" />
+      <img class="card__image" src="${e[i].short_screenshots[0].image}" alt="screenshot"/>
     </div>
     <div class="card-title">
       <a href="#" class="toggle-info btn">
@@ -248,11 +260,13 @@ const fetchGamesList = (data) => {
         <span class="right"></span>
       </a>
       <h3>
-          <small>${e[i].name}</small>
+          <small>${e[i].name.slice(0, 20)+'...'}</small>
       </h3>
     </div>
     <div class="card-flap flap1">
       <div class="card-description">
+      
+      <span class="released">Nome: ${e[i].name}</span> <br>
       <span class="released">Lançamento: ${e[i].released}</span> <br>
       <span class="released">Nota: ${e[i].rating}</span>
       <div class="score"></div>
@@ -266,6 +280,7 @@ const fetchGamesList = (data) => {
   </div>
 </li>
     `;
+    // Função Cards (https://codepen.io/candroo/pen/wKEwRL)
     movieItem = document.querySelectorAll(".movie-list li");
     setTimeout(function () {
       movieItem[i].classList.remove("fade");
@@ -307,5 +322,5 @@ const fetchGamesList = (data) => {
   });  
 
 };
-
+// Exibe por padrão na tela de inicio os Novos Jogos
 fetchNewGames();

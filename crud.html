@@ -26,8 +26,15 @@
    <link rel="stylesheet" href="css/style.css">
    <!-- style CSS -->
    <link rel="stylesheet" href="css/RAWG.css">
-</head>
+
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+   <link rel="stylesheet" href="css/datatable.css">
+  </head>
 <body>
+  <!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
    <div class="body_bg">
    <!--::header part start::-->
    <header class="main_menu single_page_menu">
@@ -74,9 +81,10 @@
       </div>
    </section>
    <!--================Blog Area =================-->
-   <section class="blog_area section_padding" id="testimonial" style="color: white;">
-    <div class="container">
-      <div class="row">
+   <section class="blog_area section_padding center" id="testimonial" style="color: white;min-height: calc(100vh - 189px);">
+    <div class="container center">
+      <div class="row center">
+        <h1 style="color: white;">CRUD</h1>
         <div id="TabelaCRUDContainer" class="row col-lg-12 col-sm-12" style="margin-top: 30px;">
           <table id="TabelaCRUD" class="col-lg-12 col-sm-12">
               <thead>
@@ -111,7 +119,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button id="DeletarUsuario" class="btn btn-danger" data-dismiss="modal" >Deletar</button>
+          <button id="DeletarUsuario" class="btn btn-danger" onclick="DeleteSucesso()" data-dismiss="modal" >Deletar</button>
         </div>
       </div>
     </div>
@@ -134,7 +142,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button id="id-SalvarEdit" class="btn btn-danger" data-dismiss="modal">Salvar</button>
+          <button id="id-SalvarEdit" class="btn btn-danger">Salvar</button>
         </div>
       </div>
     </div>
@@ -158,6 +166,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
    </footer>
    <!--::footer_part end::-->
 </div>
+
    <script src="js/jquery-1.12.1.min.js"></script>
    <!-- popper js -->
    <script src="js/popper.min.js"></script>
@@ -184,7 +193,32 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
    <!-- custom js -->
    <script src="js/custom.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.all.min.js"></script>
    <script src="assets/js/CRUD.js"></script>
+   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+   <script>
+  $(document).ready( function () {
+    $('#TabelaCRUD').DataTable({
+      "language": {
+          url: "//cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json"
+      }
+    });
+} );
+     function EditSucesso(){
+      Swal.fire({
+            icon: 'success',
+            title: 'Sucesso',
+            text: 'Edit efetuado com sucesso',
+        })
+     }
+     function DeleteSucesso(){
+      Swal.fire({
+            icon: 'success',
+            title: 'Sucesso',
+            text: 'Delete efetuado com sucesso',
+        })
+     }
+   </script>
 </body>
 
 </html>

@@ -1,3 +1,5 @@
+//Gera Grafico Quantidade de Jogos Por Genero
+
 async function CriaGrafico1() {
 
     var ctx = document.getElementsByClassName('line-chart');
@@ -34,8 +36,10 @@ async function CriaGrafico1() {
     })
 }
 
+//Chama a Função do Grafico 1
 CriaGrafico1()
 
+//Gera Grafico Quantidade de Jogos Por Loja
 async function CriaGrafico2() {
 
     var ctx = document.getElementsByClassName('line-chart4');
@@ -73,13 +77,14 @@ async function CriaGrafico2() {
     })
 }
 
+//Chama a Função do Grafico 2
 CriaGrafico2()
-
 
 function generateRandomNumber(min, max){
     return Math.floor(Math.random() * (max - min)) + min
 }
 
+//Gera cor aleatoria para o grafico
 function generateRandomColor(){
     const red = generateRandomNumber(0, 255)
     const green = generateRandomNumber(0, 255)

@@ -37,12 +37,12 @@ const CreateRowCRUD = (nome,email,senha,indice) => {
         <td>${email}</td>
         <td>${senha}</td>
         <td>
-            <a type="button" class="button" data-toggle="modal" data-target="#modalEdit" onclick="CallEditUsuario(${indice})">
+            <a type="button" class="genric-btn primary-border" data-toggle="modal" data-target="#modalEdit" onclick="CallEditUsuario(${indice})">
                 <span class="material-icons-outlined">
                 edit
                 </span>
                 </a>
-            <a type="button" class="button" data-toggle="modal" data-target="#modalDelete" onclick="CallDeleteUsuario(${indice})">
+            <a type="button" class="genric-btn primary-border" data-toggle="modal" data-target="#modalDelete" onclick="CallDeleteUsuario(${indice})">
                 <span class="material-icons-outlined">
                 delete
                 </span>
@@ -53,6 +53,7 @@ const CreateRowCRUD = (nome,email,senha,indice) => {
     document.getElementById('TabelaCRUDCorpo').appendChild(row);
 }
 
+//Atualiza tabela
 function updateTabela(){
 
     document.querySelector('#TabelaCRUDCorpo').innerHTML = "";
@@ -72,7 +73,7 @@ function CallEditUsuario(indice){
     document.getElementById('EmailEdit').value = usuarios[indice].email;
     document.getElementById('SenhaEdit').value = usuarios[indice].senha;
 
-    document.getElementById('id-SalvarEdit').setAttribute('onclick',`GetChanges(${indice})`)
+    document.getElementById('id-SalvarEdit').setAttribute('onclick',`GetChanges(${indice});EditSucesso()`)
 }
 
 function GetChanges(indice){
@@ -95,10 +96,8 @@ function CallDeleteUsuario(indice){
     document.getElementById('NomeUsuarioDelete').value = usuarios[indice].nome;
     document.getElementById('EmailDelete').value = usuarios[indice].email;
 
-    document.getElementById('DeletarUsuario').setAttribute('onclick',`deleteUsuario(${indice})`)
+    document.getElementById('DeletarUsuario').setAttribute('onclick',`deleteUsuario(${indice});DeleteSucesso()`)
 }
-
-
 
 function usuarioExiste(usuario){
 
@@ -150,7 +149,7 @@ function login(){
             title: 'Sucesso',
             text: 'Login efetuado com sucesso',
         })
-
+        //Muda no CSS para aparecer e desaparecer em caso de Login
         document.getElementById('LogoutBtn').style.display = 'block';
         document.getElementById('LoginBtn').style.display = 'none';
         document.getElementById('SignUpBtn').style.display = 'none';
@@ -169,7 +168,7 @@ function login(){
 }
 
 function logout(){
-    
+    //Muda no CSS para aparecer e desaparecer em caso de logout
     document.getElementById('LogoutBtn').style.display = 'none';
     document.getElementById('LoginBtn').style.display = 'block';
     document.getElementById('SignUpBtn').style.display = 'block';
@@ -233,6 +232,7 @@ function registrar(){
     ClearModal('formularioCreate');
 }
 
+//Limpa Modal
 function ClearModal(id){
     let form = document.getElementById(id);
 
@@ -241,4 +241,5 @@ function ClearModal(id){
     }
 }
 
+//Atualiza Tabela
 updateTabela();
