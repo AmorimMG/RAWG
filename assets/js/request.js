@@ -252,7 +252,7 @@ const fetchGamesList = (data) => {
     <li>
     <div class="card" style="">
     <div class="card__image-holder">
-      <img class="card__image" src="${e[i].short_screenshots[0].image}" alt="screenshot"/>
+      <img class="card__image" src="${e[i].short_screenshots[0].image}" alt="screenshot" style="min-height: 250px;max-height: 250px"/>
     </div>
     <div class="card-title">
       <a href="#" class="toggle-info btn">
@@ -268,17 +268,41 @@ const fetchGamesList = (data) => {
       
       <span class="released">Nome: ${e[i].name}</span> <br>
       <span class="released">Lançamento: ${e[i].released}</span> <br>
-      <span class="released">Nota: ${e[i].rating}</span>
+      <span class="released">Nota RAWG: ${e[i].rating}</span>
       <div class="score"></div>
       </div>
-      <div class="card-flap flap2">
+        <div class="card-flap flap2">
         <div class="card-actions">
-          <a href="#" class="btn">Ler Mais</a>
+      <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Ler Mais
+        </button>
         </div>
       </div>
     </div>
   </div>
 </li>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 80px">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel" style="color: black;">
+         <span class="released">${e[i].name}</span> <br> 
+         </h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+       <img class="card__image" src="${e[i].short_screenshots[0].image}" alt="screenshot" style="min-height: 250px;max-height: 250px"/>
+       </div>
+       <div class="modal-footer">
+         <a href="#" class="genric-btn primary-border" data-dismiss="modal">Fechar</a>
+       </div>
+     </div>
+   </div>
+ </div>
     `;
     // Função Cards (https://codepen.io/candroo/pen/wKEwRL)
     movieItem = document.querySelectorAll(".movie-list li");
